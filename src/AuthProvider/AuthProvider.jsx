@@ -14,7 +14,6 @@ import {
 import app from "../firebase/firebase.conifg";
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-// const githubProvider = new GithubAuthProvider();
 
 export const ContextData = createContext(null);
 
