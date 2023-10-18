@@ -30,22 +30,22 @@ const Register = () => {
     }
 
     // Register New Account Function
-    createUser(email, password)
-      .then((res) => {
-        const currUser = res.user;
-        if (currUser) {
-          sendVerificationEmail().then(() => {
-            setsuccess("Your account is created. Please verify your email!");
-          });
-          profileUpdate(username);
-          navigate("/");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setShowError("");
-        setShowError(err.message);
-      });
+    //   createUser(email, password)
+    //     .then((res) => {
+    //       const currUser = res.user;
+    //       if (currUser) {
+    //         sendVerificationEmail().then(() => {
+    //           setsuccess("Your account is created. Please verify your email!");
+    //         });
+    //         profileUpdate(username);
+    //         navigate("/");
+    //       }
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       setShowError("");
+    //       setShowError(err.message);
+    //     });
   };
 
   return (
