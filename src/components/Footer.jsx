@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <>
       <footer className="footer py-10 bg-base-200 text-base-content grid grid-cols-1 md:grid-cols-3 place-items-center">
-        <aside className="text-center">
+        <aside className="text-center xl:pl-5">
           <NavLink className="text-3xl font-black mx-auto">
             TecH<span className="text-red-600">BranD</span>
           </NavLink>

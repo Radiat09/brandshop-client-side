@@ -3,9 +3,9 @@ import heroBg from "../assets/banner-bg.jpg";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="max-w-7xl mx-auto my-28">
       <div
-        className="hero min-h-screen"
+        className="hero "
         style={{
           backgroundImage: `url(${heroBg})`,
         }}
@@ -22,7 +22,7 @@ const Banner = () => {
               and up-to-date information about various Technology, their
               features, specifications, prices, and user reviews.
             </p>
-            <a href="">
+            <a href="#featured_brands">
               <button className="btn bg-orange-500 text-white flex justify-center items-center mx-auto">
                 Stay tune with Branded porducts{" "}
                 <BsArrowBarDown className="text-xl"></BsArrowBarDown>

@@ -12,7 +12,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);
-  console.log(brands);
+
   return (
     <div>
       <Banner></Banner>
