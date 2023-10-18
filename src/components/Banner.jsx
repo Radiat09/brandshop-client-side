@@ -22,8 +22,8 @@ const Banner = () => {
               and up-to-date information about various Technology, their
               features, specifications, prices, and user reviews.
             </p>
-            <a href="featured_brands">
-              <button className="btn btn-primary flex justify-center items-center mx-auto">
+            <a href="">
+              <button className="btn bg-orange-500 text-white flex justify-center items-center mx-auto">
                 Stay tune with Branded porducts{" "}
                 <BsArrowBarDown className="text-xl"></BsArrowBarDown>
               </button>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Apple",
+    "logo": "https://i.ibb.co/mFrTm3W/photo-1662946834879-e42e04811369.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Microsoft",
+    "logo": "https://i.ibb.co/nRCDyF1/dck-microsoft-logo-on-wall-2021-getty.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Google",
+    "logo": "https://i.ibb.co/jTXrHy9/photo-1573804633927-bfcbcd909acd.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Samsung",
+    "logo": "https://i.ibb.co/znRd1QS/b9c442b8185c4f3aa8c0e203a579bda9.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Intel",
+    "logo": "https://i.ibb.co/xSfQ3vp/wp8006125.png"
+  },
+  {
+    "id": 6,
+    "name": "Sony",
+    "logo": "https://i.ibb.co/wrrpCM1/photo-1662948261149-3f0a0ab0181b.jpg"
+  },
+  {
+    "id": 7,
+    "name": "ASUS",
+    "logo": "https://i.ibb.co/Chb1WL7/79183.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Dell",
+    "logo": "https://i.ibb.co/Y85vQNC/710556-Dell-1080-P.jpg"
+  },
+  {
+    "id": 9,
+    "name": "AMD Ryzen",
+    "logo": "https://i.ibb.co/DpRthLX/amd-ryzen-logo-chip-background.webp"
+  },
+  {
+    "id": 10,
+    "name": "Xiaomi",
+    "logo": "https://i.ibb.co/k1hCP0Q/photo-1662948099967-820a793a8013.jpg"
+  },
+  {
+    "id": 11,
+    "name": "MSI",
+    "logo": "https://i.ibb.co/LPMJfMX/MSI.jpg"
+  },
+  {
+    "id": 12,
+    "name": "NVIDIA",
+    "logo": "https://i.ibb.co/HGRtcmS/boliviainteligente-ZS3-S9a3j-EQ-unsplash.jpg"
+  }
+]
