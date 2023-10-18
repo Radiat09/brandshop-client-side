@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { ContextData } from "../AuthProvider/AuthProvider";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+  const { user, logout } = useContext(ContextData);
   const navLinks = (
     <>
       <li className="md:hidden">
@@ -42,6 +47,17 @@ const Navbar = () => {
     else lightMode();
   };
 
+  const handleLogOut = () => {
+    logout()
+      .then(() => {
+        // Sign-out successful.
+        toast.success("Logged Out Successfully!");
+      })
+      .catch((err) => {
+        // An error happened.
+        toast.error(`${err.message}`);
+      });
+  };
   return (
     <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-2 py-4 bg-base-100 max-w-7xl mx-auto">
       <div className="">
@@ -82,23 +98,51 @@ const Navbar = () => {
           <input
             type="checkbox"
             onChange={toggleTheme}
-            className="toggle toggle-sm"
+            className="toggle toggle-sm mr-2"
           />
-          <details className="dropdown hidden md:block">
-            <summary className="m-1 btn rounded-none">My Account</summary>
-            <ul className="mt-1 shadow menu dropdown-content z-[1] bg-base-100 rounded-none">
-              <li className="">
-                <NavLink className="btn btn-sm rounded-none mb-1" to="/login">
-                  Login
-                </NavLink>
-              </li>
-              <li className="">
-                <NavLink className="btn btn-sm rounded-none" to="/register">
-                  Register
-                </NavLink>
-              </li>
-            </ul>
-          </details>
+
+          {user ? (
+            <div className="cursor-pointer">
+              <div className="dropdown dropdown-bottom dropdown-end">
+                <div tabIndex={0} className="avatar m-1">
+                  <div className="w-9 rounded-full ring ring-secondary ring-offset-pink-500 ring-offset-2">
+                    {user.photoURL ? (
+                      <img src={user?.photoURL} />
+                    ) : (
+                      <img src="https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg" />
+                    )}
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box  w-24"
+                >
+                  <li>
+                    <NavLink to="/profile">Profile</NavLink>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut}>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <details className="dropdown hidden md:block">
+              <summary className="m-1 btn rounded-none">My Account</summary>
+              <ul className="mt-1 shadow menu dropdown-content z-[1] bg-base-100 rounded-none">
+                <li className="">
+                  <NavLink className="btn btn-sm rounded-none mb-1" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+                <li className="">
+                  <NavLink className="btn btn-sm rounded-none" to="/register">
+                    Register
+                  </NavLink>
+                </li>
+              </ul>
+            </details>
+          )}
         </div>
       </div>
     </div>

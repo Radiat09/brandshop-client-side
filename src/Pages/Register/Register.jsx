@@ -1,15 +1,15 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { AuthContext } from "../AuthProvider/AuthProvider";
+import { ContextData } from "../../AuthProvider/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();
   const [showHide, setShowHide] = useState(false);
   const [showError, setShowError] = useState("");
   const [success, setsuccess] = useState("");
-  // const { createUser, sendVerificationEmail, profileUpdate } =
-  //   useContext(AuthContext);
+  const { createUser, profileUpdateOfUsers } = useContext(ContextData);
+  const passwordValidator = /(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-])/;
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,9 +23,15 @@ const Register = () => {
     if (password.length < 6) {
       setShowError("Password should be at least 6 characters");
       return;
-    } else if (!/[A-Z]/.test(password)) {
+    }
+    if (!/[A-Z]/.test(password)) {
       setShowError("");
       setShowError("Password must have one uppercase");
+      return;
+    }
+    if (!passwordValidator.test(password)) {
+      setShowError("");
+      setShowError("Password must have one special Character");
       return;
     }
 
@@ -34,10 +40,8 @@ const Register = () => {
       .then((res) => {
         const currUser = res.user;
         if (currUser) {
-          sendVerificationEmail().then(() => {
-            setsuccess("Your account is created. Please verify your email!");
-          });
-          profileUpdate(username);
+          setsuccess("Your account is created. Please verify your email!");
+          profileUpdateOfUsers(username);
           navigate("/");
         }
       })
@@ -50,7 +54,7 @@ const Register = () => {
 
   return (
     <div className="mt-16">
-      <h3 className="text-xl md:text-6xl font-black text-center text-orange-300">
+      <h3 className="text-3xl md:text-6xl font-black text-center text-orange-300">
         Register Now!
       </h3>
       <div className="mt-16">
@@ -58,7 +62,7 @@ const Register = () => {
           onSubmit={handleRegister}
           className="flex flex-col gap-5 justify-center items-center"
         >
-          <div className="w-1/5">
+          <div className="w-full  md:w-2/5 xl:w-1/4 2xl:w-1/5">
             <input
               type="text"
               name="username"
@@ -67,7 +71,7 @@ const Register = () => {
               id=""
             />
           </div>
-          <div className="w-1/5">
+          <div className="w-full  md:w-2/5 xl:w-1/4 2xl:w-1/5">
             <input
               type="email"
               name="email"
@@ -77,7 +81,7 @@ const Register = () => {
               id=""
             />
           </div>
-          <div className="w-1/5 relative indicator">
+          <div className="w-full  md:w-2/5 xl:w-1/4 2xl:w-1/5 relative indicator">
             {showError && (
               <span className="indicator-item badge text-red-500">
                 {showError}
@@ -106,7 +110,7 @@ const Register = () => {
           <div>
             {success ? <p className="text-green-500">{success}</p> : ""}
           </div>
-          <div className="w-1/5">
+          <div className="w-full  md:w-2/5 xl:w-1/4 2xl:w-1/5">
             <input
               type="submit"
               value="Register"

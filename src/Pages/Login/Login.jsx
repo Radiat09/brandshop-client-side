@@ -1,16 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
+import { ContextData } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
   const [showHide, setShowHide] = useState(false);
   const [showError, setShowError] = useState("");
-  // const { emailAndPassSignIn, googleSignIn, githubSignIn } =
-  //   useContext(AuthContext);
+  const { emailPassSignIn, googleSignIn } = useContext(ContextData);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,7 +18,7 @@ const Login = () => {
 
     setShowError("");
 
-    emailAndPassSignIn(email, password)
+    emailPassSignIn(email, password)
       .then((res) => {
         console.log(res.user);
         navigate("/");
@@ -39,21 +38,11 @@ const Login = () => {
         console.log(err);
       });
   };
-  const handleGithubLogin = () => {
-    githubSignIn()
-      .then((res) => {
-        console.log(res.user);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <>
-      <div className="mt-16">
-        <h3 className="text-xl md:text-6xl font-black text-center text-orange-300">
+      <div className=" my-40">
+        <h3 className="text-3xl md:text-6xl font-black text-center text-orange-300">
           Login Now!
         </h3>
         <div className="mt-16">
@@ -61,7 +50,7 @@ const Login = () => {
             onSubmit={handleLogin}
             className="flex flex-col gap-5 justify-center items-center"
           >
-            <div className="w-1/5">
+            <div className="w-full md:w-2/5 xl:w-1/4 2xl:w-1/5">
               <input
                 type="email"
                 name="email"
@@ -71,7 +60,7 @@ const Login = () => {
                 id=""
               />
             </div>
-            <div className="w-1/5 relative ">
+            <div className="w-full md:w-2/5 xl:w-1/4 2xl:w-1/5 relative ">
               <input
                 type={showHide ? "text" : "password"}
                 name="password"
@@ -103,7 +92,7 @@ const Login = () => {
                 </span>
               )}
             </div>
-            <div className="w-1/5">
+            <div className="w-full md:w-2/5 xl:w-1/4 2xl:w-1/5">
               <input
                 type="submit"
                 value="Login"
@@ -119,12 +108,6 @@ const Login = () => {
               className="text-3xl cursor-pointer"
             >
               <FcGoogle></FcGoogle>
-            </span>
-            <span
-              onClick={handleGithubLogin}
-              className="text-3xl cursor-pointer"
-            >
-              <FaGithub></FaGithub>
             </span>
           </div>
           <div className="flex justify-center mt-5">
