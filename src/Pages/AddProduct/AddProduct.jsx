@@ -1,5 +1,7 @@
+import Swal from "sweetalert2";
+
 const AddProduct = () => {
-  const handleAddCoffee = (e) => {
+  const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -10,7 +12,7 @@ const AddProduct = () => {
     const short_description = form.short_description.value;
     const photo = form.photo.value;
 
-    const product = {
+    const newProduct = {
       name,
       brandName,
       type,
@@ -19,35 +21,35 @@ const AddProduct = () => {
       short_description,
       photo,
     };
-    console.log(product);
+    console.log(newProduct);
 
     // Send data to server
-    // fetch("https://coffe-store-server-beta.vercel.app/coffees", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(newCoffee),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         title: "Success!",
-    //         text: "Coffee added successfully!",
-    //         icon: "success",
-    //         confirmButtonText: "Cool?",
-    //       });
-    //     }
-    //     console.log(data);
-    //   });
+    fetch("http://localhost:9000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Product added successfully!",
+            icon: "success",
+            confirmButtonText: "Cool?",
+          });
+        }
+        console.log(data);
+      });
   };
   return (
     <div className="min-h-[70vh] max-w-7xl mx-auto my-40">
       <div className="bg-[#F4F3F0] rounded py-20 px-1 md:px-10 lg:px-32">
         <h2 className=" text-5xl font-bold text-center mb-10">Add Product</h2>
         <div>
-          <form onSubmit={handleAddCoffee} className="">
+          <form onSubmit={handleAddProduct} className="">
             <div className="flex flex-col md:flex-row gap-2">
               <div className="flex-1 space-y-5">
                 <div className="">
