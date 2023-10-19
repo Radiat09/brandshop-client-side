@@ -55,7 +55,7 @@ const SingleBrandCard = ({ product }) => {
           </p>
         </div>
         <div className="card-actions justify-center">
-          <Link>
+          <Link to={`/productDetails/${_id}`}>
             <button className="btn bg-orange-500 text-white btn-sm hover:text-orange-500 hover:bg-white">
               Details
             </button>

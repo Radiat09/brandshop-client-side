@@ -20,16 +20,19 @@ const SingleBrand = () => {
   return (
     <div className="mb-40 mt-10">
       <Slider></Slider>
-      <h1 className="text-5xl text-center">
-        Single Brand products {products.length}
-      </h1>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
-        {products?.map((product) => (
-          <SingleBrandCard
-            key={product?._id}
-            product={product}
-          ></SingleBrandCard>
-        ))}
+      <div className="mb-40">
+        {products.length === 0 ? (
+          <h2 className="text-5xl text-center">No Data Found</h2>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-7xl mx-auto">
+            {products?.map((product) => (
+              <SingleBrandCard
+                key={product?._id}
+                product={product}
+              ></SingleBrandCard>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
