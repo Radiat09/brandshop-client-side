@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const brandProducts = useLoaderData();
+  const { name, brandName, type, price, rating, short_description, photo } =
+    product;
 
   useEffect(() => {
     const singleProduct = brandProducts?.find(
@@ -12,7 +15,41 @@ const ProductDetails = () => {
     );
     setProduct(singleProduct);
   }, [brandProducts, id]);
-  console.log(product);
+  // console.log(product);
+
+  const handleAddToCart = () => {
+    const newProduct = {
+      name,
+      brandName,
+      type,
+      price,
+      rating,
+      short_description,
+      photo,
+    };
+    // console.log(newProduct);
+
+    // Send data to server
+    fetch("http://localhost:9000/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Added to Cart successfully!",
+            icon: "success",
+            confirmButtonText: "Cool?",
+          });
+        }
+        console.log(data);
+      });
+  };
   return (
     <div>
       <h1 className="text-5xl text-center my-5">
@@ -82,7 +119,10 @@ const ProductDetails = () => {
             <span className="lg:ml-4"> {product?.short_description}</span>
           </p>
           <div className="flex mt-8">
-            <button className="btn  bg-orange-500  text-white hover:text-orange-500 hover:bg-white">
+            <button
+              onClick={handleAddToCart}
+              className="btn  bg-orange-500  text-white hover:text-orange-500 hover:bg-white"
+            >
               Add to Cart
             </button>
           </div>
