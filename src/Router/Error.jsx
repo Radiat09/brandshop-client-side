@@ -1,9 +1,9 @@
 import { FaArrowLeft } from "react-icons/fa";
-import error from "../assets/error.png";
+import error from "../assets/error.jpg";
 import { Link } from "react-router-dom";
 const Error = () => {
   return (
-    <div className="mt-32 shadow-2xl shadow-pink-600">
+    <div className="mt-32 ">
       <h1 className="text-5xl font-black text-center ">Page not Found</h1>
       <div className="flex justify-center mt-10">
         <img src={error} alt="" />
