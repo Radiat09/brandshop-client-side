@@ -51,19 +51,19 @@ const ProductDetails = () => {
       });
   };
   return (
-    <div>
+    <div className="my-40">
       <h1 className="text-5xl text-center my-5">
-        {product?.name.toUpperCase()}
+        {product?.name?.toUpperCase()}
       </h1>
       <div className="flex flex-col lg:flex-row gap-5 p-2">
-        <div className="flex-1">
+        <div className="flex-1 flex justify-end">
           <img
             className="rounded-sm"
             src={product?.photo}
             alt={`image of ${product?.name}`}
           />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 my-auto items-center">
           <div className="mb-3">
             <p className="flex items-center gap-1">
               <span className="card-title">Brand: </span>{" "}

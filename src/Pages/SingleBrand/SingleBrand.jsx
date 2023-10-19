@@ -14,9 +14,6 @@ const SingleBrand = () => {
       .then((data) => setProducts(data));
   }, [lowBrand]);
 
-  console.log(brand);
-
-  console.log(products);
   return (
     <div className="mb-40 mt-10">
       <Slider></Slider>
