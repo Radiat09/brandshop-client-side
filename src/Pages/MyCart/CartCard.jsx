@@ -16,7 +16,7 @@ const CartCard = ({ product, setCart, loadedCart }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:9000/cart/${id}`, {
+        fetch(`https://assignment-10-server-xi-blush.vercel.app/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

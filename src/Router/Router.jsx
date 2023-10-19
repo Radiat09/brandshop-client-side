@@ -9,11 +9,13 @@ import SingleBrand from "../Pages/SingleBrand/SingleBrand";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import MyCart from "../Pages/MyCart/MyCart";
 import UpdateProduct from "../Pages/UpdateProduct/UpdateProduct";
+import Error from "./Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LayoutMain></LayoutMain>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:9000/products/${params.brand}/${params.id}`),
+          fetch(
+            `https://assignment-10-server-xi-blush.vercel.app/products/${params.brand}/${params.id}`
+          ),
       },
       {
         path: "brands/:brand",
@@ -61,7 +65,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:9000/products/${params.brand}`),
+          fetch(
+            `https://assignment-10-server-xi-blush.vercel.app/products/${params.brand}`
+          ),
       },
       {
         path: "/myCart",
@@ -70,7 +76,8 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:9000/cart"),
+        loader: () =>
+          fetch("https://assignment-10-server-xi-blush.vercel.app/cart"),
       },
     ],
   },

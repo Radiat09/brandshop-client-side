@@ -25,7 +25,7 @@ const AddProduct = () => {
     console.log(newProduct);
 
     // Send data to server
-    fetch("http://localhost:9000/products", {
+    fetch("https://assignment-10-server-xi-blush.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

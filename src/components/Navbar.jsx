@@ -9,12 +9,20 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li className="md:hidden">
-        <NavLink className=" btn-sm rounded-none mb-1" to="/login">
+        <NavLink
+          className={`${user ? "hidden" : "block"} btn-sm rounded-none mb-1`}
+          to="/login"
+        >
           Login
         </NavLink>
       </li>
       <li className="md:hidden">
-        <NavLink className=" btn-sm rounded-none mb-1 lg:mb-0" to="/register">
+        <NavLink
+          className={`${
+            user ? "hidden" : "block"
+          } btn-sm rounded-none mb-1 lg:mb-0`}
+          to="/register"
+        >
           Register
         </NavLink>
       </li>
@@ -103,7 +111,7 @@ const Navbar = () => {
 
           {user ? (
             <div className="cursor-pointer">
-              <div className="dropdown dropdown-bottom dropdown-end">
+              <div className="dropdown dropdown-bottom dropdown-end relative">
                 <div tabIndex={0} className="avatar m-1">
                   <div className="w-9 rounded-full ring ring-secondary ring-offset-pink-500 ring-offset-2">
                     {user.photoURL ? (
@@ -117,9 +125,6 @@ const Navbar = () => {
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box  w-24"
                 >
-                  <li>
-                    <NavLink to="/profile">Profile</NavLink>
-                  </li>
                   <li>
                     <button onClick={handleLogOut}>Logout</button>
                   </li>

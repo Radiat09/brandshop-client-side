@@ -9,7 +9,9 @@ const SingleBrand = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:9000/products/${lowBrand}`)
+    fetch(
+      `https://assignment-10-server-xi-blush.vercel.app/products/${lowBrand}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [lowBrand]);

@@ -30,13 +30,16 @@ const UpdateProduct = () => {
     // console.log(newProduct);
 
     // Send data to server
-    fetch(`http://localhost:9000/products/${brand}/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
+    fetch(
+      `https://assignment-10-server-xi-blush.vercel.app/products/${brand}/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

@@ -25,7 +25,7 @@ const FeaturedCategory = () => {
           <p className="ml-4">Select your Category</p>
         </div>
         <div>
-          <Link className="rounded-full bg-orange-500 py-1 px-2 text-sm flex gap-1 justify-center items-center text-white pr-4">
+          <Link className="rounded-full bg-orange-500 py-1 px-2 text-sm flex md:gap-1 justify-center items-center text-white pr-4 text-center">
             Show all Category
             <BsArrowBarRight></BsArrowBarRight>
           </Link>

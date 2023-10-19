@@ -81,9 +81,7 @@ const Login = () => {
               </span>
             </div>
             <div className="flex flex-col justify-center">
-              <Link to="/forgotpassword" className="text-orange-300 ">
-                Forgot Password?
-              </Link>
+              <Link className="text-orange-300 ">Forgot Password?</Link>
             </div>
             <div>
               {showError && (
