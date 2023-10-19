@@ -1,6 +1,11 @@
+import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
+  const { id, brand } = useParams();
+  const { name, brandName, type, price, rating, short_description, photo } =
+    useLoaderData();
+  // console.log(id, brand);
   const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,10 +27,10 @@ const UpdateProduct = () => {
       short_description,
       photo,
     };
-    console.log(newProduct);
+    // console.log(newProduct);
 
     // Send data to server
-    fetch("http://localhost:9000/products", {
+    fetch(`http://localhost:9000/products/${brand}/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -34,22 +39,22 @@ const UpdateProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount) {
           Swal.fire({
             title: "Success!",
-            text: "Product added successfully!",
+            text: "Product Update successfully!",
             icon: "success",
             confirmButtonText: "Cool?",
           });
         }
-        console.log(data);
+        // console.log(data);
       });
   };
   return (
     <div className="min-h-[70vh] max-w-7xl mx-auto my-40">
       <div className="bg-[#F4F3F0] rounded py-20 px-1 md:px-10 lg:px-32">
         <h2 className=" text-5xl font-bold text-center mb-10">
-          Update Product
+          Update Product of {name}
         </h2>
         <div>
           <form onSubmit={handleUpdateProduct} className="">
@@ -65,8 +70,8 @@ const UpdateProduct = () => {
                     type="text"
                     placeholder="Enter product name"
                     name="name"
+                    defaultValue={name}
                     className="w-full  p-3 rounded-md"
-                    required
                   />
                 </div>
                 <div className="">
@@ -79,8 +84,8 @@ const UpdateProduct = () => {
                     type="text"
                     placeholder="Enter brand name"
                     name="brandName"
+                    defaultValue={brandName}
                     className="w-full p-3 rounded-md"
-                    required
                   />
                 </div>
                 <div className="">
@@ -90,6 +95,7 @@ const UpdateProduct = () => {
                     </span>
                   </label>
                   <select
+                    defaultValue={type}
                     name="type"
                     className="select select-bordered w-full p-3 border-none "
                   >
@@ -113,8 +119,8 @@ const UpdateProduct = () => {
                     type="text"
                     placeholder="Enter product price"
                     name="price"
+                    defaultValue={price}
                     className="w-full  p-1 md:p-3 rounded-md"
-                    required
                   />
                 </div>
                 <div className="">
@@ -127,8 +133,8 @@ const UpdateProduct = () => {
                     type="text"
                     placeholder="Enter product rating"
                     name="rating"
+                    defaultValue={rating}
                     className="w-full p-1 md:p-3 rounded-md"
-                    required
                   />
                 </div>
                 <div className="">
@@ -141,8 +147,8 @@ const UpdateProduct = () => {
                     type="text"
                     placeholder="Enter short description"
                     name="short_description"
+                    defaultValue={short_description}
                     className="w-full  p-1 md:p-3 rounded-md"
-                    required
                   />
                 </div>
               </div>
@@ -158,6 +164,7 @@ const UpdateProduct = () => {
                   type="text"
                   placeholder="Enter product photo URL"
                   name="photo"
+                  defaultValue={photo}
                   className="w-full  p-3 rounded-md"
                 />
               </div>
