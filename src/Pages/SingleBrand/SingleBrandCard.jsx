@@ -60,9 +60,11 @@ const SingleBrandCard = ({ product }) => {
               Details
             </button>
           </Link>
-          <button className="btn bg-orange-500 text-white btn-sm hover:text-orange-500 hover:bg-white">
-            update
-          </button>
+          <Link to={`/updateProduct/${_id}`}>
+            <button className="btn bg-orange-500 text-white btn-sm hover:text-orange-500 hover:bg-white">
+              update
+            </button>
+          </Link>
         </div>
       </div>
     </div>
