@@ -1,5 +1,6 @@
-Client Repo:: https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-Radiat09
-Live Link :: https://assignment-10-rid.web.app/
+•>Client Repo:: https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-Radiat09
+
+•>Live Link :: https://assignment-10-rid.web.app/
 
 Site Featrues
 
