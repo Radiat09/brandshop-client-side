@@ -4,7 +4,9 @@ import { useEffect, useState } from "react";
 
 const MyCart = () => {
   const [total, setTotal] = useState(0);
-  const cart = useLoaderData();
+
+  const loadedCart = useLoaderData();
+  const [cart, setCart] = useState(loadedCart);
 
   useEffect(() => {
     let count = 0;
@@ -21,10 +23,15 @@ const MyCart = () => {
           <h2 className="text-4xl text-center mb-3">
             Your Items: {cart.length}
           </h2>
-          <p className="text-2xl text-center">Total: {total}$</p>
-          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10">
+          <p className="text-2xl text-center">Total: ${total}</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
             {cart?.map((product) => (
-              <CartCard key={product?._id} product={product}></CartCard>
+              <CartCard
+                key={product?._id}
+                setCart={setCart}
+                product={product}
+                loadedCart={loadedCart}
+              ></CartCard>
             ))}
           </div>
         </div>
