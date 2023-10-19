@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SingleBrandCard = ({ product }) => {
   const { _id, brandName, name, photo, price } = product;
-  // console.log(typeof rating);
+  // console.log(_id);
 
   return (
     <div className="card  flex gap-3 border dark:border-none shadow py-5">
@@ -19,7 +19,7 @@ const SingleBrandCard = ({ product }) => {
             <span className="card-title">Name:</span>
             <span>{name}</span>
           </h2>
-          <p className="flex items-center items-center">
+          <div className="flex items-center ">
             <span className="card-title">Ratings: </span>
             <div className="rating">
               <input
@@ -48,14 +48,14 @@ const SingleBrandCard = ({ product }) => {
                 className="mask mask-star-2 bg-orange-400"
               />
             </div>
-          </p>
+          </div>
           <p className="flex items-center gap-1">
             <span className="card-title">Price:</span>
             <span> {price}$</span>
           </p>
         </div>
         <div className="card-actions justify-center">
-          <Link to={`/productDetails/${_id}`}>
+          <Link to={`/products/${brandName}/${_id}`}>
             <button className="btn bg-orange-500 text-white btn-sm hover:text-orange-500 hover:bg-white">
               Details
             </button>
