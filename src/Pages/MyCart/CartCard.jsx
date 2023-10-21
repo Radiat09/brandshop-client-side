@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 
-const CartCard = ({ product, setCart, loadedCart }) => {
+const CartCard = ({ product, setCart, cart }) => {
   const { name, photo, brandName, price, _id } = product;
 
   const handleDelete = (id) => {
-    console.log(id);
+    // console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -24,9 +24,7 @@ const CartCard = ({ product, setCart, loadedCart }) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your item has been deleted.", "success");
 
-              const remaining = loadedCart?.filter(
-                (product) => product?._id !== id
-              );
+              const remaining = cart?.filter((product) => product?._id !== id);
               setCart(remaining);
             }
           });
@@ -73,7 +71,7 @@ const CartCard = ({ product, setCart, loadedCart }) => {
 CartCard.propTypes = {
   product: PropTypes.object,
   setCart: PropTypes.func,
-  loadedCart: PropTypes.array,
+  cart: PropTypes.array,
 };
 
 export default CartCard;

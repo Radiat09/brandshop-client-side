@@ -23,7 +23,7 @@ const Banner = () => {
               features, specifications, prices, and user reviews.
             </p>
             <a href="#featured_brands">
-              <button className="btn bg-orange-500 text-white flex justify-center items-center mx-auto">
+              <button className="btn bg-orange-500 text-white hover:text-orange-500 hover:bg-white flex justify-center items-center mx-auto">
                 Stay tune with Branded porducts{" "}
                 <BsArrowBarDown className="text-xl"></BsArrowBarDown>
               </button>

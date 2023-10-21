@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { ContextData } from "../../AuthProvider/AuthProvider";
 
 const ProductDetails = () => {
+  const { user } = useContext(ContextData);
   const [product, setProduct] = useState({});
   const { id } = useParams();
   const brandProducts = useLoaderData();
@@ -18,7 +20,9 @@ const ProductDetails = () => {
   // console.log(product);
 
   const handleAddToCart = () => {
+    const email = user.email;
     const newProduct = {
+      email,
       name,
       brandName,
       type,
@@ -47,7 +51,7 @@ const ProductDetails = () => {
             confirmButtonText: "Cool?",
           });
         }
-        console.log(data);
+        // console.log(data);
       });
   };
   return (

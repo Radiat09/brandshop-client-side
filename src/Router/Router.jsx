@@ -70,17 +70,18 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/myCart",
+        path: "/myCart/:email",
         element: (
           <PrivateRoute>
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch("https://assignment-10-server-xi-blush.vercel.app/cart"),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-10-server-xi-blush.vercel.app/cart/${params.email}`
+          ),
       },
     ],
   },
 ]);
-
 export default router;

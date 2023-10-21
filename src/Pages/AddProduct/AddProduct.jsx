@@ -47,7 +47,7 @@ const AddProduct = () => {
   };
   return (
     <div className="min-h-[70vh] max-w-7xl mx-auto my-40">
-      <div className="bg-[#F4F3F0] rounded py-20 px-1 md:px-10 lg:px-32">
+      <div className="bg-orange-50 rounded py-20 px-1 md:px-10 lg:px-32">
         <h2 className=" text-5xl font-bold text-center mb-10">Add Product</h2>
         <div>
           <form onSubmit={handleAddProduct} className="">

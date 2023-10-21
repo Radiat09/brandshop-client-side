@@ -25,14 +25,15 @@ const MyCart = () => {
           </h2>
           <p className="text-2xl text-center">Total: ${total}</p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
-            {cart?.map((product) => (
-              <CartCard
-                key={product?._id}
-                setCart={setCart}
-                product={product}
-                loadedCart={loadedCart}
-              ></CartCard>
-            ))}
+            {cart &&
+              cart?.map((product) => (
+                <CartCard
+                  key={product?._id}
+                  product={product}
+                  setCart={setCart}
+                  cart={cart}
+                ></CartCard>
+              ))}
           </div>
         </div>
       ) : (
