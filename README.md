@@ -1,8 +1,12 @@
-•>Client Repo:: https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-Radiat09
+# Brand Shop (TechBrand)
 
-•>Live Link :: https://assignment-10-rid.web.app/
+[Live Link]( https://assignment-10-rid.web.app/)
+[Server Repo](https://github.com/Radiat09/brandshop-server-side)
 
-Site Featrues
+## Project Summary
+A website where anyone can find, buy and keep track of their branded products 
+
+## Site Featrues
 
 !!!Must Read: If there is no data in the brand route or any route that means the problem is coming from vercel because everything is tested before and after the production.
 
